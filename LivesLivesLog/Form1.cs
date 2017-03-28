@@ -69,14 +69,23 @@ namespace LivesLivesLog
                     tmpListViewItem.SubItems.Add(tmpContentArray[i]);
 
                     this.listView1.Items.Add(tmpListViewItem);
-                    tmpListViewItem.EnsureVisible();
+                    if (this.checkBox1.Checked)
+                    {
+                        tmpListViewItem.EnsureVisible();
+                    }
+                        
                     tmpLogType = string.Empty;
                 }
 
                 //加一个空行
                 ListViewItem tmpListViewItemEmpty = new ListViewItem();
                 this.listView1.Items.Add(tmpListViewItemEmpty);
-                tmpListViewItemEmpty.EnsureVisible();
+
+                if(this.checkBox1.Checked)
+                {
+                    tmpListViewItemEmpty.EnsureVisible();
+                }
+                
             }
         }
 
