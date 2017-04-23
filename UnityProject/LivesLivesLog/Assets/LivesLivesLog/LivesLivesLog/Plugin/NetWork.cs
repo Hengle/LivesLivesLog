@@ -41,7 +41,7 @@ namespace LivesLives
                             byte[] tmpData = System.Text.Encoding.Default.GetBytes(tmpContent);
                             mSocketSend.Send(tmpData);
                         }
-                        Thread.Sleep(100);
+                        Thread.Sleep(1);
                     }
                 });
             }
