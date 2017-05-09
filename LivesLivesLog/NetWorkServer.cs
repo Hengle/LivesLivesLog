@@ -56,7 +56,13 @@ namespace LivesLivesLog
                     int tmpReceived = mSocketReceive.Receive(tmpByteArray);
                     if(tmpReceived>0)
                     {
-                        string tmpContent = System.Text.Encoding.Default.GetString(tmpByteArray);
+                        byte[] tmpRealData = new byte[tmpReceived];
+                        for (int i = 0; i < tmpReceived; i++)
+                        {
+                            tmpRealData[i] = tmpByteArray[i];
+                        }
+
+                        string tmpContent = System.Text.Encoding.Default.GetString(tmpRealData);
                         lock(this)
                         {
                             mQueueReceived.Enqueue(tmpContent);

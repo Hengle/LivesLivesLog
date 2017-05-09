@@ -43,9 +43,18 @@ namespace LivesLivesLog
         {
             string tmpContent = NetWorkServer.GetSingleton().Dequeue();
 
+            
+
+            for (int i = 0; i < 100; i++)
+            {
+                tmpContent += NetWorkServer.GetSingleton().Dequeue();
+            }
+
 
             if (string.IsNullOrEmpty(tmpContent) == false)
             {
+                tmpContent = tmpContent.Trim();
+
                 using (StreamWriter sw = new StreamWriter(mLogSaveFilePath, true))
                 {
                     sw.WriteLine(tmpContent);
@@ -69,10 +78,10 @@ namespace LivesLivesLog
                     tmpListViewItem.SubItems.Add(tmpContentArray[i]);
 
                     this.listView1.Items.Add(tmpListViewItem);
-                    if (this.checkBox1.Checked)
-                    {
-                        tmpListViewItem.EnsureVisible();
-                    }
+                    //if (this.checkBox1.Checked)
+                    //{
+                    //    tmpListViewItem.EnsureVisible();
+                    //}
                         
                     tmpLogType = string.Empty;
                 }
@@ -93,6 +102,8 @@ namespace LivesLivesLog
         {
             string tmpIp = this.textBox1.Text;
             NetWorkServer.GetSingleton().Init(tmpIp.Trim());
+
+            button1.Enabled = false;
         }
     }
 }
