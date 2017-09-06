@@ -68,6 +68,10 @@ namespace LivesLivesLog
                             mQueueReceived.Enqueue(tmpContent);
                         }
                     }
+                    else
+                    {
+                        mSocketReceive = mSocketAccept.Accept();
+                    }
                 }
             }
         }
